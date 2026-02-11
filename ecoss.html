@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coooookkk Geçmiş Olsun balıımm ❤️❤️❤️</title>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Quicksand', sans-serif;
+            background: #fff5f5; 
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            color: #4a4a4a;
+            overflow: hidden;
+        }
+
+        .container {
+            text-align: center;
+            background: white;
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(255, 182, 193, 0.4);
+            max-width: 90%;
+            width: 400px;
+        }
+
+        h1 { font-size: 1.5rem; color: #ff7b93; }
+        p { font-size: 0.9rem; margin-bottom: 1.5rem; }
+
+        
+        .items-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin-bottom: 2rem;
+        }
+
+        .item {
+            cursor: pointer;
+            padding: 15px;
+            border-radius: 15px;
+            background: #fff0f3;
+            transition: all 0.3s ease;
+            font-size: 2rem;
+            filter: grayscale(100%);
+        }
+
+        .item.active {
+            filter: grayscale(0%);
+            background: #ffe3e8;
+            transform: scale(1.1);
+            border: 2px solid #ff7b93;
+        }
+
+        
+        .progress-container {
+            width: 100%;
+            background: #eee;
+            border-radius: 10px;
+            height: 10px;
+            margin-bottom: 10px;
+            overflow: hidden;
+        }
+
+        .progress-bar {
+            width: 0%;
+            height: 100%;
+            background: #ff7b93;
+            transition: width 0.5s ease;
+        }
+
+       
+        #final-message {
+            display: none;
+            margin-top: 20px;
+            animation: fadeIn 1s ease-in;
+        }
+
+        .photo-placeholder {
+            width: 100%;
+            height: auto; /* Yükseklik otomatik olsun dedik */
+            background: transparent; /* Gri arka planı kaldıralım */
+            border-radius: 10px;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .photo-placeholder img {
+            width: 100%; /* Genişlik kutuya sığsın */
+            height: auto; /* Yükseklik orantılı olarak ayarlansın */
+            border-radius: 10px; /* Köşeleri yumuşatalım */
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div id="game-part">
+        <h1>Bitanem icin digital şifa paketi 💊</h1>
+        <p>İyileşme sürecini %100 tamamlamak için aşağıdakilere sırasıyla tıkla!</p>
+        
+        <div class="items-grid">
+            <div class="item" onclick="collect(this, 33)">🩺🥼💉<br><span style="font-size: 10px;">Seyrantepede verilen anlamsiz ilaclar</span></div>
+            <div class="item" onclick="collect(this, 66)">🥔🥔🥔<br><span style="font-size: 10px;">Ablanın acılmayan balkon kapısnın arkasındaki patates</span></div>
+            <div class="item" onclick="collect(this, 100)">🎮ᖭ༏ᖫ🎮<br><span style="font-size: 10px;">Gergin gece tlou'su</span></div>
+        </div>
+
+        <div class="progress-container">
+            <div class="progress-bar" id="myBar"></div>
+        </div>
+        <small id="status-text">%0 Yükleniyor...</small>
+    </div>
+
+    <div id="final-message">
+        <div class="photo-placeholder">
+            <img src="ecosla_fotom.jpeg" alt="Bizzikoo">
+        </div>
+        <h2>Bağışıklık %100! ❤️</h2>
+        <p>Ağır grip imha edildi karpuz kesmece grip s... Seni çoook özledim bitanem .İyileşir iyileşmez enn güzelinden bi date!!!</p>
+        <button onclick="location.reload()" style="background: #ff7b93; color:white; border:none; padding:10px 20px; border-radius:10px; cursor:pointer;">Tekrar Oyna (Ya da Bana Yaz!)</button>
+    </div>
+</div>
+
+<script>
+    let clicks = 0;
+    function collect(element, percent) {
+        if(!element.classList.contains('active')) {
+            element.classList.add('active');
+            clicks++;
+            document.getElementById('myBar').style.width = percent + "%";
+            document.getElementById('status-text').innerText = "%" + percent + " Yükleniyor...";
+
+            if(clicks === 3) {
+                setTimeout(() => {
+                    document.getElementById('game-part').style.display = 'none';
+                    document.getElementById('final-message').style.display = 'block';
+                }, 800);
+            }
+        }
+    }
+</script>
+
+</body>
+</html>
